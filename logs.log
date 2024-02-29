@@ -9126,3 +9126,33 @@ DATETIMEDATA
 2024-02-20 08:00:00         19.534432  
 2024-02-20 09:00:00         25.131476  , plot=residuals, scale=1, save=False, fold=None, fit_kwargs=None, plot_kwargs=None, groups=None, feature_name=None, label=False, verbose=True, system=True, display=None, display_format=None)
 2024-02-29 17:25:36,994:INFO:Checking exceptions
+2024-02-29 17:29:13,320:INFO:Initializing predict_model()
+2024-02-29 17:29:13,320:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000002292A33D750>, estimator=LinearRegression(fit_intercept=False, n_jobs=-1), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000002292D51C860>)
+2024-02-29 17:29:13,320:INFO:Checking exceptions
+2024-02-29 17:29:13,320:INFO:Preloading libraries
+2024-02-29 17:29:13,322:INFO:Set up data.
+2024-02-29 17:29:13,324:INFO:Set up index.
+2024-02-29 17:29:18,224:INFO:Initializing predict_model()
+2024-02-29 17:29:18,224:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000002292A33D750>, estimator=LinearRegression(fit_intercept=False, n_jobs=-1), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000002292D1CB380>)
+2024-02-29 17:29:18,225:INFO:Checking exceptions
+2024-02-29 17:29:18,225:INFO:Preloading libraries
+2024-02-29 17:29:18,227:INFO:Set up data.
+2024-02-29 17:29:18,230:INFO:Set up index.
+2024-02-29 17:29:58,421:INFO:Initializing predict_model()
+2024-02-29 17:29:58,421:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000002292A33D750>, estimator=LinearRegression(fit_intercept=False, n_jobs=-1), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000002292D1C9EE0>)
+2024-02-29 17:29:58,421:INFO:Checking exceptions
+2024-02-29 17:29:58,421:INFO:Preloading libraries
+2024-02-29 17:29:58,424:INFO:Set up data.
+2024-02-29 17:29:58,429:INFO:Set up index.
+2024-02-29 17:30:21,729:INFO:Initializing predict_model()
+2024-02-29 17:30:21,729:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000002292A33D750>, estimator=LinearRegression(fit_intercept=False, n_jobs=-1), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000002292D1CBC40>)
+2024-02-29 17:30:21,729:INFO:Checking exceptions
+2024-02-29 17:30:21,729:INFO:Preloading libraries
+2024-02-29 17:30:21,732:INFO:Set up data.
+2024-02-29 17:30:21,737:INFO:Set up index.
+2024-02-29 17:31:04,820:INFO:Initializing predict_model()
+2024-02-29 17:31:04,820:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x000002292A33D750>, estimator=LinearRegression(fit_intercept=False, n_jobs=-1), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x000002292D1CA8E0>)
+2024-02-29 17:31:04,820:INFO:Checking exceptions
+2024-02-29 17:31:04,820:INFO:Preloading libraries
+2024-02-29 17:31:04,821:INFO:Set up data.
+2024-02-29 17:31:04,823:INFO:Set up index.
