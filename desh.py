@@ -4,16 +4,16 @@ import pandas as pd
 import plotly.express as px
 
 # Incorporate data
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
+df = pd.read_csv('https://github.com/Thanathat26/Pm2.5/blob/main/P_MLcsv')
 
 # Initialize the app
 app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.Div(children='My First App with Data, Graph, and Controls'),
+    html.Div(children='Testing dash ML'),
     html.Hr(),
-    dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='controls-and-radio-item'),
+    dcc.RadioItems(options=['PM25', 'lifeExp', 'gdpPercap'], value='lifeExp', id='controls-and-radio-item'),
     dash_table.DataTable(data=df.to_dict('records'), page_size=6),
     dcc.Graph(figure={}, id='controls-and-graph')
 ])
