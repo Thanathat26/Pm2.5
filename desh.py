@@ -11,7 +11,7 @@ app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.Div(children='My First App with Data and a Graph'),
+    html.Div(children='Predict of PM2.5'),
     dash_table.DataTable(data=df.to_dict('records'), page_size=10),
     dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='O3')),
     dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='WS')),
