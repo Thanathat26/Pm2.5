@@ -18,10 +18,7 @@ app.layout = html.Div([
     #dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='O3')),
     #dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='WS')),
     dcc.Graph(figure=px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='O3'))])
-@callback(
-    Output(component_id='controls-and-graph', component_property='figure'),
-    Input(component_id='controls-and-radio-item', component_property='value')
-)
+
 def update_graph(col_chosen):
     fig = px.histogram(df, x='DATETIMEDATA', y=col_chosen, histfunc='avg')
     return fig
