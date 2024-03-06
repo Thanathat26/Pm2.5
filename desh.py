@@ -1,4 +1,5 @@
-import dash
+import dash 
+from dash import Dash, html, dash_table, dcc
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
@@ -16,12 +17,12 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.H1("Predict PM2.5"),
-            html.Hr(),
-            dcc.Graph(id='graph', figure=px.scatter(df, x='DATETIMEDATA', y='prediction_label'))
+            dbc.Col([html.Hr()]),
+            dcc.Graph(id='graph', figure=px.line(df, x='DATETIMEDATA', y='prediction_label', title='PM2.5 Values')),
+            dash_table.DataTable(data=df.to_dict('records'), page_size=6),
         ])
     ])
 ])
-
 # Run the app
 if __name__ == '__main__':
     app.run_server(debug=True)
