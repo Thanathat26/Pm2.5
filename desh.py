@@ -5,41 +5,27 @@ import plotly.express as px
 
 # Incorporate data
 df = pd.read_csv('P_ML.csv')
-radio_options = [
-    {'label': 'Ozone (O3)', 'value': 'O3'},
-    {'label': 'Wind Speed (WS)', 'value': 'WS'},
-    {'label': 'Predicted PM2.5', 'value': 'prediction_label'}
-]
+
 # Initialize the app
 app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.Div(children='PM2.5 Prediction Dashboard'), 
+    html.Div(children='Predict of PM2.5'),
     html.Hr(),
-    dcc.RadioItems(
-        id='controls-and-radio-item',
-        options=radio_options,
-        value='prediction_label',
-        labelStyle={'display': 'inline-block'}  
-    ),
-    dash_table.DataTable(
-        data=df.to_dict('records'),
-        page_size=10
-    ),
-    dcc.Graph(id='selected-column-graph') 
-])
+    #dcc.RadioItems(options=['O3', 'WS', 'prediction_label'], value='prediction_label', id='controls-and-radio-item'),
+    dash_table.DataTable(data=df.to_dict('records'), page_size=10),    
+    #dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='O3')),
+    #dcc.Graph(figure=px.line(df, x='DATETIMEDATA', y='WS')),
+    dcc.Graph(figure=px.scatter(df, x='DATETIMEDATA', y='prediction_label', color='O3'))])
 @callback(
-    Output(component_id='selected-column-graph', component_property='figure'),
+    Output(component_id='controls-and-graph', component_property='figure'),
     Input(component_id='controls-and-radio-item', component_property='value')
 )
-def update_graph(selected_column):
-    if selected_column in ['O3', 'WS','prediction_label']:
-        fig = px.histogram(df, x='DATETIMEDATA', y=selected_column, histfunc='avg', color='')
-    else: 
-        fig = px.histogram(df, x='DATETIMEDATA', y=selected_column)
-
+def update_graph(col_chosen):
+    fig = px.histogram(df, x='DATETIMEDATA', y=col_chosen, histfunc='avg')
     return fig
+
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
