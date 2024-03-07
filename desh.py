@@ -52,9 +52,9 @@ app.layout = dbc.Container([
 )
 def update_graph(n_clicks, graph_type):
     if n_clicks > 0:
-        return [graph_types[graph_type](df, x="DATETIMEDATA", y="prediction_label", title="PM2.5 Values")]
+        return [graph_types.get(graph_type, px.line)(df, x="DATETIMEDATA", y="prediction_label", title="PM2.5 Values")]
     else:
-        return [] 
+        return []
 
 # Run the app
 if __name__ == "__main__":
