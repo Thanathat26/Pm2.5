@@ -13,10 +13,24 @@ df = pd.read_csv('P_ML2.csv')
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Define graph types
-graph_types = {"Line Chart": px.line, "Scatter Plot": px.scatter, "Bar Plot": px.bar, "Histogram": px.histogram}
+graph_types = {
+    "Line Chart": px.line,
+    "Scatter Plot": px.scatter,
+    "Bar Chart": px.bar,
+    "Violin Plot": px.violin,
+}
 
 # App layout
 app.layout = dbc.Container([
+    dbc.NavbarSimple(
+        children=[
+            dbc.NavItem(dbc.NavLink("อ้างอิง", href="http://air4thai.pcd.go.th/webV3/#/Home")),
+            dbc.NavItem(dbc.NavLink("about", href="#")),
+        ],
+        brand="Predict PM2.5",
+        color="primary",
+        dark=True,
+    ),
     dbc.Row([
         dbc.Col([
             html.H1("Predict PM2.5", className="text-center"),
@@ -44,8 +58,10 @@ app.layout = dbc.Container([
         ])
     ], className="mt-4")
 ])
-
-
+"""@app.callback(
+    Output(component_id='controls-and-graph', component_property='figure'),
+    Input(component_id='controls-and-radio-item', component_property='value')
+)"""
 @app.callback(
     [Output("graph", "figure")],
     [Input("update-button", "n_clicks"), Input("graph-type", "value")],
