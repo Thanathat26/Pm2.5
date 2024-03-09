@@ -63,14 +63,19 @@ app.layout = dbc.Container([
     Input(component_id='controls-and-radio-item', component_property='value')
 )"""
 @app.callback(
-    [Output("graph", "figure")],
+    Output("graph", "figure"),
     [Input("update-button", "n_clicks"), Input("graph-type", "value")],
 )
 def update_graph(n_clicks, graph_type):
     if n_clicks > 0:
-        return [graph_types.get(graph_type, px.line)(df, x="DATETIMEDATA", y="prediction_label", title="PM2.5 Values")]
+        try:
+            figure = graph_types.get(graph_type, px.line)(df, x="DATETIMEDATA", y="prediction_label", title="ค่า PM2.5")
+        except Exception as e:
+            figure = px.line(x=["Placeholder"], y=[0])
+            print(f"Error: {e}")
+        return figure
     else:
-        return []
+        return px.line(x=[""], y=[], title="")
 
 # Run the app
 if __name__ == "__main__":
