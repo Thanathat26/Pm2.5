@@ -8,6 +8,7 @@ import dash_html_components as html
 
 # Incorporate data
 df = pd.read_csv('P_ML2.csv')
+df2 = pd.read_csv('t_ML2.csv')
 
 # Initialize the app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -51,10 +52,14 @@ app.layout = dbc.Container([
     ], className="mt-4"),
     dbc.Row([
         dbc.Col([
-            html.H2("Predictions", className="text-center"),
+            html.H2("Predictions_PM25", className="text-center"),
             dash_table.DataTable(
                 id="predictions-table", data=df.to_dict("records"), page_size=6
             ),
+            html.H2("Predictions_TEMP", className="text-center"),
+            dash_table.DataTable(
+                id="predictions-table", data=df2.to_dict("records"), page_size=6),
+                dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label"))
         ])
     ], className="mt-4")
 ])
