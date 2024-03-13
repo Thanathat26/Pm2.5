@@ -34,7 +34,7 @@ app.layout =html.Div([
     dbc.NavbarSimple(
         children=[
             html.A(
-                "อ้างอิง",
+                "REF",
                 href="http://air4thai.pcd.go.th/webV3/#/Home",
                 className="navbar-brand",
             ),
@@ -134,7 +134,7 @@ dbc.Row([
 def update_graph(n_clicks, graph_type):
     if n_clicks > 0:
         try:
-            figure = graph_types.get(graph_type, px.line)(df, x="DATETIMEDATA", y="prediction_label", title="ค่า PM2.5")
+            figure = graph_types.get(graph_type, px.line)(df, x="DATETIMEDATA", y="prediction_label")
         except Exception as e:
             figure = px.line(x=["Placeholder"], y=[0])
             print(f"Error: {e}")

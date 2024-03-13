@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 body {
   width: 100%;
   height: 100%;
-  /* Add your background pattern here */
+  font-family: "Silkscreen", sans-serif;
   background: rgba(29, 31, 32, 0.904)
    ;
 
