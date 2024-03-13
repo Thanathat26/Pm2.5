@@ -17,7 +17,7 @@ df2 = pd.read_csv('t_ML2.csv')
 fig = go.Figure(data=[go.Surface(z=df.values)])
 
 # Initialize the app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, 'stylesheet.css'])
 gapminder = pd.read_csv('P_MLMap.csv')
 gapmindertemp = pd.read_csv('T_MLMap.csv')
 
@@ -30,26 +30,13 @@ graph_types = {
 }
 
 # App layout
-app.layout = html.Div([
-    dbc.NavbarSimple(
-        children=[
-            html.A(
-                "อ้างอิง",
-                href="http://air4thai.pcd.go.th/webV3/#/Home",
-                className="navbar-brand",
-            ),
-        ],
-        brand="Predict PM2.5",
-        color="primary",
-        dark=True,
-    ),
-    dbc.Container([
+app.layout =dbc.Container([
     dbc.Row([
         dbc.Col([
-            html.H1("Predict PM2.5", className="text-center"),
+            html.H1("Predict PM2.5", style={'margin-top': 'rem'}),
             dbc.Col([
                 html.Hr(),
-                html.Label("Select type of graph:"),
+                
                 dcc.Dropdown(
                     id="graph-type",
                     options=[{"label": option, "value": option} for option in graph_types.keys()],
@@ -57,14 +44,14 @@ app.layout = html.Div([
                 ),
                 html.Button("Update Graph", id="update-button", n_clicks=0),
             ])
-        ], width=6),
+        ], width=4),
         dbc.Col([
             dcc.Graph(id="graph")
         ])
     ], className="mt-4"),
   dbc.Row([
     dbc.Col([
-        html.H2("PM2.5 Map", className="text-center"),
+        html.H1("PM2.5 Map", className="text-center"),
         dcc.Graph(figure=px.choropleth(gapmindertemp,
                                        locations="iso_alpha",
                                        color="prediction_label",
@@ -121,7 +108,7 @@ dbc.Row([
     ])
 ])
 ])
-])
+
 
 
 @app.callback(
