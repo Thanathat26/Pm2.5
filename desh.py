@@ -29,16 +29,20 @@ graph_types = {
 }
 
 # App layout
-app.layout = dbc.Container([
+app.layout = html.Div([
     dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("อ้างอิง", href="http://air4thai.pcd.go.th/webV3/#/Home")),
-            
+            html.A(
+                "อ้างอิง",
+                href="http://air4thai.pcd.go.th/webV3/#/Home",
+                className="navbar-brand",
+            ),
         ],
         brand="Predict PM2.5",
         color="primary",
         dark=True,
     ),
+    dbc.Container([
     dbc.Row([
         dbc.Col([
             html.H1("Predict PM2.5", className="text-center"),
@@ -57,7 +61,7 @@ app.layout = dbc.Container([
             dcc.Graph(id="graph")
         ])
     ], className="mt-4"),
-        dbc.Row([
+    dbc.Row([
         dbc.Col([
             html.H2("PM2.5 Map", className="text-center"),
             dcc.Graph(figure=px.choropleth(gapminder,
@@ -81,7 +85,9 @@ app.layout = dbc.Container([
             html.H2("Predictions_TEMP", className="text-center"),
             dash_table.DataTable(
                 id="predictions-table", data=df2.to_dict("records"), page_size=6),
-                dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label")),
+            dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label")),
+        ])
+    ]),
     dbc.Row([
         dbc.Col([
             html.H2("Temperature Map", className="text-center"),
@@ -93,8 +99,7 @@ app.layout = dbc.Container([
                    ))
         ])
     ])
-        ])
-    ])
+])
 ])
 
 
