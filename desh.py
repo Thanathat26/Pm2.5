@@ -5,11 +5,12 @@ from dash import Dash, html, dash_table, dcc, Input, Output
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 # Incorporate data
 df = pd.read_csv('P_ML2.csv')
 df2 = pd.read_csv('t_ML2.csv')
-
+fig = go.Figure(data=[go.Surface(z=df.values)])
 # Initialize the app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -26,7 +27,7 @@ app.layout = dbc.Container([
     dbc.NavbarSimple(
         children=[
             dbc.NavItem(dbc.NavLink("อ้างอิง", href="http://air4thai.pcd.go.th/webV3/#/Home")),
-            dbc.NavItem(dbc.NavLink("about", href="#")),
+            dbc.NavItem(dbc.NavLink("Map", href="#")),
         ],
         brand="Predict PM2.5",
         color="primary",
@@ -48,6 +49,7 @@ app.layout = dbc.Container([
         ], width=6),
         dbc.Col([
             dcc.Graph(id="graph")
+            
         ])
     ], className="mt-4"),
     dbc.Row([
@@ -59,9 +61,9 @@ app.layout = dbc.Container([
             html.H2("Predictions_TEMP", className="text-center"),
             dash_table.DataTable(
                 id="predictions-table", data=df2.to_dict("records"), page_size=6),
-                dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label"))
-        ])
-    ], className="mt-4")
+                dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label")),
+    ])
+])
 ])
 """@app.callback(
     Output(component_id='controls-and-graph', component_property='figure'),
