@@ -11,11 +11,14 @@
 กราฟ: แสดงแนวโน้มของ PM2.5 ในช่วงเวลาต่างๆ
 ตาราง: แสดงค่า PM2.5 ละเอียดสำหรับพื้นที่ที่เลือก
 การทำนาย: แสดงค่า PM2.5 ที่คาดการณ์ไว้สำหรับช่วงเวลาต่างๆ
+
+## วิธีการรัน
+กดรัน desh.py 
 ```
 ## ติดตั้ง
 git clone https://github.com/Thanathat26/Pm2.5.git
 ```
-### หรือ [กดที่นี่](https://github.com/Thanathat26/web/archive/refs/heads/main.zip)
+### หรือ [กดที่นี่](https://github.com/Thanathat26/Pm2.5/archive/refs/heads/main.zip)
 
 ##ติดตั้ง :
 ```
