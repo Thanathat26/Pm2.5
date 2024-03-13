@@ -74,7 +74,6 @@ app.layout = html.Div([
     ]),
     dbc.Row([
         dbc.Col([
-            html.H2("Predictions_PM25", className="text-center"),
             dash_table.DataTable(
                 id="predictions-table", data=df.to_dict("records"), page_size=6
             ),
@@ -90,7 +89,6 @@ app.layout = html.Div([
     ]),
     dbc.Row([
         dbc.Col([
-            html.H2("Temperature Map", className="text-center"),
             dcc.Graph(figure=px.choropleth(gapmindertemp,
                     locations="iso_alpha",
                     color="prediction_label",
