@@ -68,7 +68,7 @@ app.layout =html.Div([
   dbc.Row([
     dbc.Col([
         html.H1("PM2.5 Map", className="text-center"),
-        dcc.Graph(figure=px.choropleth(gapmindertemp,
+        dcc.Graph(figure=px.choropleth(gapminder,
                                        locations="iso_alpha",
                                        color="prediction_label",
                                        scope="asia",
@@ -81,8 +81,8 @@ app.layout =html.Div([
         ),
         coloraxis=dict(
             colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
-            cmin=gapmindertemp['prediction_label'].min(),
-            cmax=gapmindertemp['prediction_label'].max())
+            cmin=gapminder['prediction_label'].min(),
+            cmax=gapminder['prediction_label'].max())
                ))
     ])
 ]),
