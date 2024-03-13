@@ -62,14 +62,24 @@ app.layout = html.Div([
             dcc.Graph(id="graph")
         ])
     ], className="mt-4"),
-    dbc.Row([
-        dbc.Col([
-            html.H2("PM2.5 Map", className="text-center"),
-            dcc.Graph(figure=px.choropleth(gapminder,
-                    locations="iso_alpha",
-                    color="prediction_label",
-                    scope="asia", 
-                    animation_frame="DATETIMEDATA",
+  dbc.Row([
+    dbc.Col([
+        html.H2("PM2.5 Map", className="text-center"),
+        dcc.Graph(figure=px.choropleth(gapmindertemp,
+                                       locations="iso_alpha",
+                                       color="prediction_label",
+                                       scope="asia",
+                                       animation_frame="DATETIMEDATA",
+                                       )
+                 .update_layout(
+            coloraxis_colorbar=dict(
+                title="PM2.5 Concentration (μg/m³)",
+                titleside="right"
+            ),
+            coloraxis=dict(
+                colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
+                cmin=gapmindertemp['prediction_label'].min(),
+                cmax=gapmindertemp['prediction_label'].max())
                    ))
         ])
     ]),
@@ -88,16 +98,28 @@ app.layout = html.Div([
             dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label")),
         ])
     ]),
-    dbc.Row([
-        dbc.Col([
-            dcc.Graph(figure=px.choropleth(gapmindertemp,
-                    locations="iso_alpha",
-                    color="prediction_label",
-                    scope="asia", 
-                    animation_frame="DATETIMEDATA",
-                   ))
-        ])
+dbc.Row([
+    dbc.Col([
+        html.H2("temperature", className="text-center"),
+        dcc.Graph(figure=px.choropleth(gapmindertemp,
+                                       locations="iso_alpha",
+                                       color="prediction_label",
+                                       scope="asia",
+                                       animation_frame="DATETIMEDATA",
+                                       )
+                 .update_layout(
+            coloraxis_colorbar=dict(
+                title="temperature Concentration",
+                titleside="right"
+            ),
+            coloraxis=dict(
+                colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
+                cmin=gapmindertemp['prediction_label'].min(),
+                cmax=gapmindertemp['prediction_label'].max()
+            )
+        ))
     ])
+])
 ])
 ])
 
