@@ -30,10 +30,26 @@ graph_types = {
 }
 
 # App layout
-app.layout =dbc.Container([
+app.layout =html.Div([
+    dbc.NavbarSimple(
+        children=[
+            html.A(
+                "อ้างอิง",
+                href="http://air4thai.pcd.go.th/webV3/#/Home",
+                className="navbar-brand",
+            ),
+        ],
+        brand="Predict PM2.5",
+        color="#6c5ce7",
+        dark=False,
+        style={
+            "background-color": "#6c5ce7",
+            "color": "black"
+        }
+    ),dbc.Container([
     dbc.Row([
         dbc.Col([
-            html.H1("Predict PM2.5", style={'margin-top': 'rem'}),
+            html.H1("Predict PM2.5", style={'margin-top': '7rem'}),
             dbc.Col([
                 html.Hr(),
                 
@@ -59,17 +75,17 @@ app.layout =dbc.Container([
                                        animation_frame="DATETIMEDATA",
                                        )
                  .update_layout(
-            coloraxis_colorbar=dict(
-                title="PM2.5 Concentration (μg/m³)",
-                titleside="right"
-            ),
-            coloraxis=dict(
-                colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
-                cmin=gapmindertemp['prediction_label'].min(),
-                cmax=gapmindertemp['prediction_label'].max())
-                   ))
-        ])
-    ]),
+        coloraxis_colorbar=dict(
+            title="PM2.5 Concentration (μg/m³)",
+            titleside="right"
+        ),
+        coloraxis=dict(
+            colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
+            cmin=gapmindertemp['prediction_label'].min(),
+            cmax=gapmindertemp['prediction_label'].max())
+               ))
+    ])
+]),
     dbc.Row([
         dbc.Col([
             dash_table.DataTable(
@@ -95,20 +111,20 @@ dbc.Row([
                                        animation_frame="DATETIMEDATA",
                                        )
                  .update_layout(
-            coloraxis_colorbar=dict(
-                title="temperature Concentration",
-                titleside="right"
-            ),
-            coloraxis=dict(
-                colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
-                cmin=gapmindertemp['prediction_label'].min(),
-                cmax=gapmindertemp['prediction_label'].max()
-            )
-        ))
-    ])
+        coloraxis_colorbar=dict(
+            title="temperature Concentration",
+            titleside="right"
+        ),
+        coloraxis=dict(
+            colorscale=[[0, "green"], [0.5, "yellow"], [1, "red"]],
+            cmin=gapmindertemp['prediction_label'].min(),
+            cmax=gapmindertemp['prediction_label'].max()
+        )
+    ))
 ])
 ])
-
+])
+])
 
 
 @app.callback(
