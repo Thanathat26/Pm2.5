@@ -18,10 +18,9 @@ fig = go.Figure(data=[go.Surface(z=df.values)])
 
 # Initialize the app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app.config['suppress_callback_exceptions'] = True
-app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
 gapminder = pd.read_csv('P_MLMap.csv')
 gapmindertemp = pd.read_csv('T_MLMap.csv')
+
 # Define graph types
 graph_types = {
     "Line Chart": px.line,
@@ -41,7 +40,7 @@ app.layout = html.Div([
             ),
         ],
         brand="Predict PM2.5",
-        color="dark",
+        color="primary",
         dark=True,
     ),
     dbc.Container([
