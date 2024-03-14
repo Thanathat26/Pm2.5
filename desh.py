@@ -95,7 +95,7 @@ app.layout =html.Div([
     ]),
     dbc.Row([
         dbc.Col([
-            html.H2("Predictions_TEMP", className="text-center"),
+            html.H2("Predictions_TEMP", className="text-center", style={'margin-top': '7rem'}),
             dash_table.DataTable(
                 id="predictions-table", data=df2.to_dict("records"), page_size=6),
             dcc.Graph(figure=px.line(df2, x="DATETIMEDATA", y="prediction_label")),
